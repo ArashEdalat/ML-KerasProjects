@@ -5,10 +5,12 @@ from tensorflow.keras.datasets import mnist
 import os
 
 # Load and preprocess data
+# Adjust the pixel set 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
 # Define the model
+# build a simple neural network with the sequential API
 model = models.Sequential([
     layers.Flatten(input_shape=(28, 28)),
     layers.Dense(128, activation='relu'),
@@ -17,6 +19,7 @@ model = models.Sequential([
 ])
 
 # Compile and train the model
+# Evaluation metric and model preparation
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
